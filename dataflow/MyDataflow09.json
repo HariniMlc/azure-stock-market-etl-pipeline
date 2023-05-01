@@ -1,0 +1,71 @@
+{
+	"name": "MyDataflow09",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Source_EmployeeData",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Sink_EmployeeData",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "derivedColumn3"
+				},
+				{
+					"name": "window1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Name as string,",
+				"          Age as string,",
+				"          Gender as string,",
+				"          Occupation as string,",
+				"          Salary as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(NumericSalary = toDecimal(Salary)) ~> derivedColumn2",
+				"window1 derive(AboveAverage = iif(AverageSalary > NumericSalary, 'No','Yes')) ~> derivedColumn3",
+				"derivedColumn2 window(AverageSalary = avg(NumericSalary)) ~> window1",
+				"derivedColumn3 select(mapColumn(",
+				"          Name,",
+				"          Age,",
+				"          Gender,",
+				"          Occupation,",
+				"          Salary,",
+				"          AboveAverage",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Employee_Data_Transformed.csv'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1) ~> sink1"
+			]
+		}
+	}
+}

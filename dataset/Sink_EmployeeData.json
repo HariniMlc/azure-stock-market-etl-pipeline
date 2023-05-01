@@ -1,0 +1,27 @@
+{
+	"name": "Sink_EmployeeData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MyAzureBlobStorage09",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "EmployeeData"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Employee_Data_Transform.csv",
+				"container": "my-container-09"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

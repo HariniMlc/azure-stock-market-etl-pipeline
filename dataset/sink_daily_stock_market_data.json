@@ -1,0 +1,24 @@
+{
+	"name": "sink_daily_stock_market_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "StockMarketBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "daily-stock-data"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "sink_daily_stock_market_data.json",
+				"folderPath": "daily-stock-data",
+				"container": "stock-market-data"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

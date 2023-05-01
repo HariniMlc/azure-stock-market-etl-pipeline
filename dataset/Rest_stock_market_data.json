@@ -1,0 +1,16 @@
+{
+	"name": "Rest_stock_market_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MyRestService09",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "daily-stock-data"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

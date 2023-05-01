@@ -1,0 +1,46 @@
+{
+	"name": "Source_EmployeeData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MyAzureBlobStorage09",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "EmployeeData"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Employee_Data.xlsx",
+				"container": "my-container-09"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Age",
+				"type": "String"
+			},
+			{
+				"name": "Gender",
+				"type": "String"
+			},
+			{
+				"name": "Occupation",
+				"type": "String"
+			},
+			{
+				"name": "Salary",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

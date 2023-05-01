@@ -1,0 +1,9 @@
+{
+	"name": "Harini-MyDataFactory09",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a0467d93-8abd-402e-8d72-2f761146c51d",
+		"tenantId": "58fb07be-9251-4542-ada1-eb79ae2c96b3"
+	}
+}
